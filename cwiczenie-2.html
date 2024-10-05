@@ -12,7 +12,7 @@
 <body>
 
 	<label>
-		Podaj x: <input type="number" id="x">
+		Podaj x: <input id="x">
 	</label>
 	
 	<input type="button" value="Wypisz od 1 do x" onclick="generuj()">
@@ -21,9 +21,32 @@
 	
 	<script>
 	
-		function generuj()
-		{
-			
+		function generuj() {
+			const wynik = document.getElementById("wynik");
+			const x = document.getElementById("x").value;
+			let parzyste = " ";
+			let nieparzyste = " ";
+
+			wynik.innerHTML = "";
+
+			if (isNaN(x)) {
+				wynik.innerHTML = "Podane x nie jest liczbą!";
+			}
+
+			else if (x < 0) wynik.innerHTML = "Podane x jest ujemne!";
+
+			else if (x == 0) wynik.innerHTML = "Podane x jest równe zero!";
+
+			else if (x > 0) {
+
+			for (let i = 1; i <= x; i++) {
+				if (i % 2 == 0) {
+					parzyste += i + " ";
+				} else nieparzyste += i + " ";
+			}
+
+			wynik.innerHTML = "Parzyste: " + parzyste + "Nieparzyste: " + nieparzyste;
+			}
 		}
 
 	</script>
