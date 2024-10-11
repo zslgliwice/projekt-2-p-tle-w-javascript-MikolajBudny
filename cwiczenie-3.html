@@ -19,7 +19,7 @@
      </select>
 	 
 	<label>
-		Ile razy: <input type="number" id="ile">
+		Ile razy: <input id="ile">
 	</label>
 	
 	<input type="button" value="Powiem tak..." onclick="przemowa()">
@@ -28,9 +28,26 @@
 	
 	<script>
 	
-		function przemowa()
-		{
-			
+		function przemowa() {
+			const wynik = document.getElementById("wynik");
+			const ile = parseInt(document.getElementById("ile").value);
+			const postac = document.getElementById("postac").value;
+
+			wynik.innerHTML = "";
+
+			if (isNaN(ile)) {
+				wynik.innerHTML = "Jeśli nie chcesz mojej zguby, krokodyla daj mi, luby";
+			}
+
+			if (postac == "c") {
+            	for (let i = 0; i < ile; i++) {
+                	wynik.innerHTML += (i + 1) + ". Mocium panie!<br>";
+            	}
+        	} else if (postac == "r") {
+            	for (let i = 0; i < ile; i++) {
+                	wynik.innerHTML += (i + 1) + ". Niech się dzieje wola nieba!<br>";
+            	}
+        	}
 		}
 
 	</script>
