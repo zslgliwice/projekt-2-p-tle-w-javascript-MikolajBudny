@@ -21,9 +21,25 @@
 	
 	<script>
 	
-		function sledztwo()
-		{
-			
+		function sledztwo() {
+			const wynik = document.getElementById("wynik");
+			const liczba = parseInt(document.getElementById("liczba").value);
+
+			wynik.innerHTML = "";
+
+			if (isNaN(liczba) || liczba < 0 || liczba > 9) {
+			wynik.textContent = "No sh*t Sherlock!";
+			} else {
+				for (let i = 0; i < 10; i++) {
+					if (i === liczba) {
+					wynik.innerHTML += i + " jest mordercą! Aresztuj je Watosnie!<br>";
+					} else if (i < liczba) {
+						wynik.innerHTML += i + " jest niewinne, jest o " + (liczba - i) + " mniejsze niż morderca.<br>";
+					} else {
+						wynik.innerHTML += i + " jest niewinne, jest o " + (i - liczba) + " większe niż morderca.<br>";
+					}
+				}
+			}
 		}
 
 	</script>

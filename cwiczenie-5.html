@@ -12,7 +12,7 @@
 <body>
 	 
 	<label>
-		Podaj x: <input type="number" id="x">
+		Podaj x: <input id="x">
 	</label>
 	
 	<input type="button" value="Pokaż wszystkie sumy" onclick="generuj()">
@@ -21,9 +21,30 @@
 	
 	<script>
 	
-		function generuj()
-		{
-			
+		function generuj() {
+			const x = parseFloat(document.getElementById("x").value);
+			const wynik = document.getElementById("wynik");
+
+			wynik.innerHTML = "";
+
+			if (isNaN(x) || !Number.isInteger(x) || x < 1) {
+				wynik.innerHTML = "Paaanie! Z takim x to my daleko nie zajedziemy!";
+			} else {
+				for (let i = 1; i <= x; i++) {
+					let suma = 0;
+					let liczby = "";
+
+					for (let j = 1; j <= i; j++) {
+						suma += j;
+						if (j === 1) {
+							liczby += j;
+						} else {
+							liczby += " + " + j;
+						}
+					}
+					wynik.innerHTML += `${liczby} = ${suma}<br>`;
+				}
+			}
 		}
 
 	</script>
